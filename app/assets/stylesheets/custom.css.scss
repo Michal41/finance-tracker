@@ -1,5 +1,5 @@
 @import 'bootstrap/dist/css/bootstrap';
-
+@import "font-awesome";
 
 .navbar {
 
@@ -28,6 +28,18 @@ border-color: #2F3E48;
 	background-color: #3999f9
 }
 
+.search-area{
+	padding :15px;
+}
+
+.result-block{
+	display: inline-block;
+}
+
+
+#search-col{
+	padding-left: 0px;
+}
 
 
 #search-btn{
