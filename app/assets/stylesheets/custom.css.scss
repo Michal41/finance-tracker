@@ -10,9 +10,16 @@ background-color: #324353 !important;
 .navbar-brand{
 	color:#FFF !important; 
 }
-.nav-link{
-	color:#FFF !important; 
+
+.active{
+	font-size: 16pt !important;
+	font-weight: bold !important;
 }
+
+.nav-link{
+	color:#FFF !important;
+}
+
 
 .btn-default {
  
@@ -34,6 +41,13 @@ border-color: #2F3E48;
 
 .result-block{
 	display: inline-block;
+}
+
+
+
+
+	.logout-button{
+	margin: 15px;
 }
 
 
