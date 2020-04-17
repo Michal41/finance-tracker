@@ -10,4 +10,16 @@ class UserStocksController < ApplicationController
 		flash[:notice]="Stock #{stock.name} was successfully added"
 		redirect_to my_portfolio_path
 	end
+
+
+	def destroy
+		UserStock.destroy_by(user_id: current_user.id, stock_id: params[:id])
+		flash.now[:notice]="#{Stock.find(params[:id]).name} 
+				was successfully removed from your portfolio"
+		respond_to do |format|
+			format.js { render :partial => "stocks/list" }
+		end
+	end
+
+
 end

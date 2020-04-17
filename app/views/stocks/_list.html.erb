@@ -1,3 +1,4 @@
+<%= render :partial => 'layouts/messages.html'%>
 
 <% if current_user.stocks.any? %>
 	<br>
@@ -13,17 +14,18 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			  	<% @tracked_stocks.each do |stock| %>
+			  	<% current_user.stocks.each do |stock| %>
 			    	<tr>
 				      <th><%= stock.ticker %></th>
 				      <td><%= stock.name %></td>
 				      <td><%= stock.last_price %></td>
-				      <td>actions</td>
+				      <td>
+				      	<%= link_to "Remove", user_stock_path(stock), method: :delete, data: {confirm: "Are you sure?"},class:"btn btn-xs btn-danger",:remote => true %>
+				      </td>
 				    </tr>
 				 <% end %>
 			  </tbody>
 			</table>
 		</div>
 	</div>
-
 <% end %>
