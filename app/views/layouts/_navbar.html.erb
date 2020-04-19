@@ -18,7 +18,11 @@
               Dropdown
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
+              <%= link_to 'Edit your account', edit_user_registration_path, class:"dropdown-item" %>
+
+              <%= link_to edit_user_registration_path, class:"dropdown-item" do %>
+                 <%= fa_icon 'edit' %> Edit your account
+              <% end %>
               <a class="dropdown-item" href="#">Another action</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Something else here</a>
@@ -27,8 +31,13 @@
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>
-        </ul>
+
+        </ul> 
         <ul class="navbar-nav nl-auto">
+          <li class="nav-link disabled user-name">
+              <%= fa_icon 'user'%>&nbsp;
+              <%= current_user.full_name %>
+          </li>
           <li class="nav-item">
             <%= link_to( 'Log out', destroy_user_session_path, class: "btn btn-xs btn-danger logout-button", method: :delete )%>
           </li>
