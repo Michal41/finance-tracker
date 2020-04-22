@@ -16,6 +16,11 @@ background-color: #324353 !important;
 	font-weight: bold !important;
 }
 
+.active-brand{
+	font-size: 22pt !important;
+	font-weight: bold !important;
+}
+
 .nav-link{
 	color:#FFF !important;
 }
@@ -62,4 +67,8 @@ border-color: #2F3E48;
 #search-btn{
 	border-color: #fff;
 	color:#fff;
+}
+
+li {
+    list-style-type: none;
 }

@@ -1,0 +1,29 @@
+<% if current_user.friends.any? %>
+	<br>
+	<div class="row">
+		<div class="col-9">
+			<table class="table table-bordered table-hover">
+			  <thead>
+			    <tr>
+			      <th scope="col">First name</th>
+			      <th scope="col">Second name</th>
+			      <th scope="col">e-mail</th>
+			      <th scope="col">Actions</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<% current_user.friends.each do |friend| %>
+			    	<tr>
+				      <th><%= friend.first_name %></th>
+				      <td><%= friend.last_name %></td>
+				      <td><%= friend.email %></td>
+				      <td>
+				      	<%= link_to "Unfollow", follow_path(friend),method: :delete, remote: true, data: {confirm: "Are you sure?"},class:"btn btn-xs btn-danger" %>
+				      </td>
+				    </tr>
+				 <% end %>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+<% end %>

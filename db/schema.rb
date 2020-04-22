@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_17_183245) do
+ActiveRecord::Schema.define(version: 2020_04_20_154454) do
+
+  create_table "firendships", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "firend_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["firend_id"], name: "index_firendships_on_firend_id"
+    t.index ["user_id"], name: "index_firendships_on_user_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followee_id"
+    t.integer "friend_id"
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "firend_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "stocks", force: :cascade do |t|
     t.string "ticker"
@@ -34,6 +56,11 @@ ActiveRecord::Schema.define(version: 2020_04_17_183245) do
     t.integer "stock_id"
   end
 
+  create_table "user_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "friend_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -48,6 +75,8 @@ ActiveRecord::Schema.define(version: 2020_04_17_183245) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "firendships", "users"
+  add_foreign_key "firendships", "users", column: "firend_id"
   add_foreign_key "user_stocks", "stocks"
   add_foreign_key "user_stocks", "users"
 end
