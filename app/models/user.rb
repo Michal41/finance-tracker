@@ -21,7 +21,7 @@ class User < ApplicationRecord
   	stocks.count < 10
   end
 
-  def can_follow_friend?(friend)
+  def cant_follow_friend?(friend)
     if friends.ids.include?(friend.id)
       return true
     end
@@ -46,4 +46,24 @@ class User < ApplicationRecord
     "Anonymous"
 
   end 
+
+  def self.search(param)
+    param.strip!
+    to_send_back = (matches("first_name",param) + 
+      matches("last_name",param) + 
+      matches("email",param)).uniq
+    return nil unless to_send_back
+    to_send_back
+
+  end
+
+  def self.matches(field_name, param)
+    where("#{field_name} like ?", "%#{param}%")
+  end
+
+  def except_current_user(users)
+    users.reject{|user| user.id==self.id}
+  end
+
+
 end

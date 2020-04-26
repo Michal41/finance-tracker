@@ -13,6 +13,7 @@ class FollowsController < ApplicationController
 		flash.now[:notice]="Unfollow complete!"
 		respond_to do |format|
 			format.js { render :partial => "friends/list" }
+			format.html {redirect_to user_path(params[:id])}
 		end	
 	end
 end

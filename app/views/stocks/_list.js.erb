@@ -1,2 +1,2 @@
-document.querySelector('#list').innerHTML = "<%= j (render :partial => 'stocks/list.html')%>"
+document.querySelector('#list').innerHTML = "<%= j (render :partial => 'stocks/list.html', :locals =>{user: current_user} )%>"
 

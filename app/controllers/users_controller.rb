@@ -2,17 +2,27 @@ class UsersController < ApplicationController
 
 
 	def my_portfolio
-			#@tracked_stocks = current_user.stocks 
+	 
 	end
 
 	def my_friends
-		#redirect_to root_path
+		
 	end
 
+	def show
+		@user=User.find(params[:id])
+	end
+
+
 	def search
-		puts params[:friend_email]
-		@friend=User.where(email: params[:friend_email]).first
-		if @friend
+		if params[:friend_email].blank?
+			flash.now[:alert]='Please enter email addres or name'
+			render_js
+			return false
+		end
+		@friends=User.search(params[:friend_email])
+		if @friends
+			@friends=current_user.except_current_user(@friends)
 			render_js
 		else
 			flash.now[:alert]='wrong email addres'

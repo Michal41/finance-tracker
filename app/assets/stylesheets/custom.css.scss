@@ -31,7 +31,6 @@ background-color: #324353 !important;
 background-color: #324353;
  
 color:#FFF;
- 
 border-color: #2F3E48;
  
 }
@@ -49,6 +48,12 @@ border-color: #2F3E48;
 }
 
 
+.already-follow-user{
+	background-color: green !important;
+	width: 120px !important;
+	white-space: normal !important;
+}
+
 .user-name{
 	padding-top:20px !important
 }
@@ -58,6 +63,16 @@ border-color: #2F3E48;
 	margin: 15px;
 }
 
+.follow-btn{
+	margin-top:3px;
+	margin-bottom:3px;
+	white-space: nowrap !important;	
+}
+
+
+.strong{
+	white-space: nowrap;
+}	
 
 #search-col{
 	padding-left: 0px;

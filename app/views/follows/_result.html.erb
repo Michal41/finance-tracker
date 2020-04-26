@@ -1,21 +1,41 @@
 
 <%= render :partial => "layouts/messages" %>
 
-<% if @friend %>
-	<div class="card card-header result-block">		
-		<strong>First name:</strong><%= @friend.first_name %> &nbsp;
-		<strong>Last name:</strong><%= @friend.last_name %> &nbsp; 
-		<strong>e-mail:</strong><%= @friend.email %> &nbsp;
+<% if @friends %>
+	
+	
+	<div class="card card-header result-block">
 
-		<%if current_user.can_follow_friend?(@friend) %>
-			<span class="badge badge-secondary">
-				You are already following this user
-			</span>
-		<% else %>
-			<%= link_to "Click to follow", follows_path(friend_id:@friend.id), method: :post, class:'btn btn-xs btn-default' %>
-		<%end%>
+		<table class="col-md-12">
+			<tbody>
+				<% @friends.each do |friend| %>	
+					<tr>
+						<td><strong>First name:</strong><%= friend.first_name %> &nbsp;&nbsp;</td>
+						<td><strong>Last name:</strong><%= friend.last_name %> &nbsp;&nbsp;</td>
+						<td><strong>e-mail:</strong><%= friend.email %> &nbsp;&nbsp;</td>
+						<%if current_user.cant_follow_friend?(friend) %>
+
+							<td>
+							You are Firends
+							</td>
+							
+
+						<% else %>
+						<td>
+						<%= link_to "Click to follow", follows_path(friend_id:friend.id), method: :post, class:'btn btn-xs btn-default follow-btn' %>
+						</td>
+						<% end %>
+						<td>
+						
+						<%= link_to "View Profile", user_path(friend), class:'btn btn-xs btn-default follow-btn' %>
+
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
 
 
-	</div>		
 <% end %>
 

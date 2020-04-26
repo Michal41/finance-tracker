@@ -20,6 +20,6 @@
 		
 	</div>
 	<div id="list">
-		<%= render :partial => 'stocks/list' %>
+		<%= render :partial => 'stocks/list', :locals => {:user => current_user } %>
 	</div>
 </div>

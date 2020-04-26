@@ -19,6 +19,7 @@
 				      <td><%= friend.email %></td>
 				      <td>
 				      	<%= link_to "Unfollow", follow_path(friend),method: :delete, remote: true, data: {confirm: "Are you sure?"},class:"btn btn-xs btn-danger" %>
+				      	<%= link_to "View Profile", user_path(friend), class:'btn btn-xs btn-default follow-btn' %>
 				      </td>
 				    </tr>
 				 <% end %>

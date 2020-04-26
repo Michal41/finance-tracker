@@ -1,0 +1,46 @@
+<h2> User Details for <%=@user.full_name%>
+ </h2>
+
+
+
+
+
+<div class="row">
+  <div class="col-9">
+
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col">First name</th>
+          <th scope="col">Second name</th>
+          <th scope="col">e-mail</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+    	<tr>
+          <th><%= @user.first_name %></th>
+          <td><%= @user.last_name %></td>
+          <td><%= @user.email %></td>
+    	  <%if current_user.cant_follow_friend?(@user) %>
+    		<td>
+    			You are friends
+
+    			<%= link_to "Unfollow", follow_path(@user),method: :delete, data: {confirm: "Are you sure?"},class:"btn btn-xs btn-danger" %>
+    		</td>
+
+    	  <% else %>
+
+    		<td><%= link_to "Click to follow", follows_path(friend_id:@user), method: :post, class:'btn btn-xs btn-default follow-btn' %>
+    		</td>
+    	  <% end %>
+    		</td>	
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h2> Stocks following by this user </h2>
+
+<%= render :partial => 'stocks/list', :locals => {:user => @user } %>
