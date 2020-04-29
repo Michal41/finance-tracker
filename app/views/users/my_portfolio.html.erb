@@ -1,5 +1,20 @@
 <h1> My Portfolio </h1>
 <div class="search-area">
+	<div class='row'>
+		<div class="col-9 col-md-7">
+
+			
+		</div>
+		<div class="col-3 col-md-2 tc mb-0">
+
+			<%= link_to update_stocks_path, class:'nu', remote: true do %>
+				<div class="mb-0"><h3>Update<br>prices</h3></div>
+				<%= fa_icon "retweet 5x" %>
+			<% end %>
+			
+		</div>
+
+	</div>
 	<h3> search stock </h3>
 	<%= form_tag search_stock_path, remote: true, method: :get do %>
 
@@ -23,3 +38,4 @@
 		<%= render :partial => 'stocks/list', :locals => {:user => current_user } %>
 	</div>
 </div>
+

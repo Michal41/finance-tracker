@@ -25,6 +25,9 @@ background-color: #324353 !important;
 	color:#FFF !important;
 }
 
+.pl{
+	padding-left:15px;
+}
 
 .btn-default {
  
@@ -47,6 +50,13 @@ border-color: #2F3E48;
 	display: inline-block;
 }
 
+.nu:hover{
+	text-decoration: none;
+	color:red;
+}
+.nu{
+	color: #324353
+}
 
 .already-follow-user{
 	background-color: green !important;
@@ -69,6 +79,17 @@ border-color: #2F3E48;
 	white-space: nowrap !important;	
 }
 
+.mb-0
+{
+	margin-bottom: 0px !important;
+}
+
+.pl-2 {
+	padding-left:15px !important;
+}
+.tc{
+	text-align: center;
+}
 
 .strong{
 	white-space: nowrap;
