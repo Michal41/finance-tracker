@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-
+	before_action :require_login
 
 	def my_portfolio
-	 
+
 	end
 
 	def my_friends
@@ -15,6 +15,9 @@ class UsersController < ApplicationController
 
 
 	def search
+		User.all.each do |user|
+			puts user.id
+		end
 		if params[:friend_email].blank?
 			flash.now[:alert]='Please enter email addres or name'
 			render_js
@@ -35,6 +38,13 @@ class UsersController < ApplicationController
 		respond_to do |format|
 			format.js { render :partial => "follows/result" }
 		end
+	end
+
+	private
+	def require_login
+	 if !user_signed_in?
+	 	redirect_to root_path
+	 end
 	end
 
 end
